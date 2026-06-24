@@ -20,8 +20,8 @@ const FAQPage = () => {
   };
 
   return (
-    <div className="w-full px-5  py-20">
-      <div className="pt-8 lg:px-28 mx-auto">
+    <div className="w-full px-5 py-20">
+      <div className="pt-8 lg:pt-20 lg:px-28 mx-auto">
         <h1
           className={`${merriweather.variable} font-merriweather text-[#312f30] text-3xl sm:text-[36px] lg:text-[48px] font-semibold mb-12`}
         >
