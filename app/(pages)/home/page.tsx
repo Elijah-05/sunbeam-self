@@ -19,13 +19,13 @@ export default function Home() {
   return (
     <div className="relative overflow-x-hidden">
       <HeroSection />
+      <InsuranceSection />
       <AboutSection />
       <ServicesSection />
       <Abasection />
       <FAQSection />
       <ContactSection />
       <Requestsection />
-      <InsuranceSection />
     {/* 
       <CookieBanner />
     */}

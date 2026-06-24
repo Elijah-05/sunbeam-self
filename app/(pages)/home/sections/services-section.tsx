@@ -26,11 +26,39 @@ const merriweather = Fredoka({
   variable: "--font-merriweather",
 });
 
+const services = [
+  {
+    id: "one-on-one",
+    title: "ABA one-on-one direct therapy",
+    image: oneonone,
+    href: "/services/#one-on-one",
+    color: "#C3F498",
+  },
+  {
+    id: "family",
+    title: "Family/Caregiver Training",
+    image: familytraining,
+    href: "/services/#family",
+    color: "#FF9358",
+  },
+  {
+    id: "occupational",
+    title: "Occupational Therapy",
+    image: occupationaltherapy,
+    href: "/services/#occupational",
+    color: "#97EAFD",
+  },
+  {
+    id: "group",
+    title: "Group Sessions",
+    image: grouptherapy,
+    href: "/services/#group",
+    color: "#FFE24F",
+  },
+];
+
 export default function ServicesSection() {
-  const [isHoveredgreen, setIsHoveredgreen] = useState(false);
-  const [isHoveredorange, setIsHoveredorange] = useState(false);
-  const [isHoveredblue, setIsHoveredblue] = useState(false);
-  const [isHoveredyellow, setIsHoveredyellow] = useState(false);
+const [hovered, setHovered] = useState<string | null>(null);
   const router = useRouter();
   const pathname = usePathname();
   const handleLinkClick = (path: string) => {
@@ -41,337 +69,169 @@ export default function ServicesSection() {
   const isInView = useInView(sectionRef, { once: true, margin: "-100px 0px" });
   const autoplay = useRef(Autoplay({ delay: 3000 }));
   return (
-    <div>
+  <div
+    ref={sectionRef}
+    className="flex flex-col gap-6 lg:gap-8 justify-center w-full bg-white lg: pb-40 "
+  >
+    <div className="flex flex-col gap-6 justify-start py-4 px-6 lg:px-28">
       <div
-        ref={sectionRef}
-        className="hidden lg:flex flex-col gap-6 lg:gap-8 h-screen justify-center w-full bg-white lg:py-0 "
+        className={`${merriweather.variable} font-merriweather font-semibold text-[35px] lg:text-[42px] text-[#312f30] leading-none`}
       >
-        <div className="flex flex-col gap-6 justify-start py-4 px-28">
-          <div
-            className={` ${merriweather.variable} font-merriweather font-semibold flex flex-col lg:gap-2 text-[35px] lg:text-[42px]  text-[#312f30] leading-none `}
-          >
-            Our Services
-          </div>
-        </div>
-        <Carousel
-          withIndicators
-          height={280}
-          slideSize={{ base: "100%", sm: "50%", md: "33.33%" }}
-          slideGap={10}
-          loop
-          align="start"
-          className="flex justify-center w-full px-28"
-        >
-          <Carousel.Slide>
-            {" "}
-            <div className="w-[400px] rounded-[25px] h-full mb-4 lg:mb-0 p-4 flex flex-col gap-2 bg-[#C3F498]  justify-center ">
-              <div className="relative flex flex-row justify-end items-start h-2/3 w-full">
-                <Link href="/services/#one-on-one">
-                  <motion.div
-                    animate={
-                      isHoveredgreen
-                        ? { opacity: 1, x: 2 }
-                        : { opacity: 1, x: 0 }
-                    }
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
-                    className="absolute top-0 left-0 flex items-center justify-start cursor-pointer gap-0 h-auto w-auto bg-[#f1f1f1a1] transition-transform ease-in-out z-10 rounded-full"
-                    onMouseEnter={() => setIsHoveredgreen(true)}
-                    onMouseLeave={() => setIsHoveredgreen(false)}
-                  >
-                    <div className="h-auto w-auto rounded-full bg-white transition-transform duration-300 hover:-rotate-45 p-1">
-                      <ChevronRight width={40} height={40} />
-                    </div>
-
-                    {isHoveredgreen && (
-                      <motion.div className="rounded-full text-black text-start px-3 py-1 transition-all ease-in-out duration-300 z-10">
-                        Read More
-                      </motion.div>
-                    )}
-                  </motion.div>
-                </Link>
-
-                <motion.div
-                  initial={{ scale: 0.8, opacity: 0 }}
-                  animate={isInView ? { scale: 1, opacity: 1 } : {}}
-                  transition={{ duration: 0.8, ease: "easeOut" }}
-                  className="w-full h-full"
-                >
-                  <Image
-                    src={oneonone}
-                    alt="logo"
-                    className="p-0 w-[230px] h-[170px] rounded-tl-[20px] rounded-tr-[20px] rounded-bl-[100px] rounded-br-[20px] z-0"
-                  />
-                </motion.div>
-              </div>
-              <div className="flex flex-row  items-start h-1/3 w-full">
-                {" "}
-                <p className="font-semibold text-[25px] w-[200px]">
-                  ABA one-on-one direct therapy
-                </p>
-              </div>
-            </div>
-          </Carousel.Slide>
-          <Carousel.Slide>
-            <div className="w-[400px] rounded-[25px] h-full p-4 flex flex-col gap-2 bg-[#FF9358] justify-center">
-              <div className="flex flex-row  items-end justify-end h-1/3 w-full">
-                {" "}
-                <p className="font-semibold text-[25px] w-[200px] text-right">
-                  Family/Caregiver Training
-                </p>
-              </div>
-              <div className="relative flex flex-row justify-between  items-end h-2/3 w-full">
-                <motion.div
-                  initial={{ scale: 0.8, opacity: 0 }}
-                  animate={isInView ? { scale: 1, opacity: 1 } : {}}
-                  transition={{ duration: 0.8, ease: "easeOut" }}
-                >
-                  <Image
-                    src={familytraining}
-                    alt="logo"
-                    className="p-0 w-[230px] h-[170px] rounded-tl-[20px] rounded-tr-[100px] rounded-bl-[20px] rounded-br-[20px]"
-                  />
-                </motion.div>
-
-                <Link href="/services/#family">
-                  <motion.div
-                    animate={
-                      isHoveredorange
-                        ? { opacity: 1, x: 2 }
-                        : { opacity: 1, x: 0 }
-                    }
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
-                    className="absolute bottom-0 right-0 flex items-center justify-start cursor-pointer  gap-0 h-auto w-auto bg-[#f1f1f1a1] transition-transform  ease-in-out z-10 rounded-full"
-                    onMouseEnter={() => setIsHoveredorange(true)}
-                    onMouseLeave={() => setIsHoveredorange(false)}
-                  >
-                    {isHoveredorange && (
-                      <motion.div className="rounded-full text-black text-start px-3 py-1 transition-all ease-in-out duration-300 z-10">
-                        Read More
-                      </motion.div>
-                    )}
-                    <div className="h-auto w-auto rounded-full bg-white transition-transform duration-300 hover:-rotate-45 p-1">
-                      <ChevronRight width={40} height={40} />
-                    </div>
-                  </motion.div>
-                </Link>
-              </div>
-            </div>
-          </Carousel.Slide>
-          <Carousel.Slide>
-            <div className="w-[400px] rounded-[25px] h-full mb-4 lg:mb-0 p-4 flex flex-col gap-2 bg-[#97EAFD] justify-center">
-              <div className="relative flex flex-row justify-end items-start h-2/3 w-full">
-                <Link href="/services/#occupational">
-                  <motion.div
-                    animate={
-                      isHoveredblue
-                        ? { opacity: 1, x: 2 }
-                        : { opacity: 1, x: 0 }
-                    }
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
-                    className="absolute top-0 left-0 flex items-center justify-start cursor-pointer  gap-0 h-auto w-auto bg-[#f1f1f1a1] transition-transform  ease-in-out z-10 rounded-full"
-                    onMouseEnter={() => setIsHoveredblue(true)}
-                    onMouseLeave={() => setIsHoveredblue(false)}
-                  >
-                    {/* Rotating Chevron */}
-                    <div className="h-auto w-auto rounded-full bg-white transition-transform duration-300 hover:-rotate-45 p-1">
-                      <ChevronRight width={40} height={40} />
-                    </div>
-
-                    {/* Read More Text (Appears on Hover) */}
-                    {isHoveredblue && (
-                      <motion.div
-                        // initial={{ opacity: 0, x: -10 }}
-                        // animate={
-                        //   isHovered
-                        //     ? { opacity: 1, x: 0 }
-                        //     : { opacity: 0, x: -10 }
-                        // }
-                        // transition={{ duration: 0.3, ease: "easeInOut" }}
-                        className="rounded-full text-black text-start px-3 py-1 transition-all ease-in-out duration-300 z-10"
-                      >
-                        Read More
-                      </motion.div>
-                    )}
-                  </motion.div>
-                </Link>
-                <motion.div
-                  initial={{ scale: 0.8, opacity: 0 }}
-                  animate={isInView ? { scale: 1, opacity: 1 } : {}}
-                  transition={{ duration: 0.8, ease: "easeOut" }}
-                >
-                  <Image
-                    src={occupationaltherapy}
-                    alt="logo"
-                    className="p-0 w-[230px] h-[170px] rounded-tl-[20px] rounded-tr-[20px] rounded-bl-[100px] rounded-br-[20px] z-0"
-                  />
-                </motion.div>
-              </div>
-              <div className="flex flex-row  items-start h-1/3 w-full">
-                {" "}
-                <p className="font-semibold text-[25px] w-[200px]">
-                  Occupational Therapy
-                </p>
-              </div>
-            </div>
-          </Carousel.Slide>
-          <Carousel.Slide>
-            {" "}
-            <div className="w-[400px] h-full mb-4 lg:mb-0 p-4 rounded-[25px] flex flex-col gap-2 bg-[#FFE24F] justify-center">
-              <div className="flex flex-row items-start justify-end h-1/3 w-full">
-                {" "}
-                <p className="font-semibold text-[25px] w-auto">
-                  Group Sessions
-                </p>
-              </div>
-              <div className="relative flex flex-row justify-between items-end h-2/3 w-full">
-                <motion.div
-                  initial={{ scale: 0.8, opacity: 0 }}
-                  animate={isInView ? { scale: 1, opacity: 1 } : {}}
-                  transition={{ duration: 0.8, ease: "easeOut" }}
-                >
-                  <Image
-                    src={grouptherapy}
-                    alt="logo"
-                    className="p-0 w-[230px] h-[170px] rounded-tl-[20px] rounded-tr-[100px] rounded-bl-[20px] rounded-br-[20px]"
-                  />
-                </motion.div>
-
-                <Link href="/services/#group">
-                  <motion.div
-                    animate={
-                      isHoveredyellow
-                        ? { opacity: 1, x: 2 }
-                        : { opacity: 1, x: 0 }
-                    }
-                    transition={{ duration: 0.3, ease: "easeInOut" }}
-                    className="absolute bottom-0 right-0 flex items-center justify-start cursor-pointer  gap-0 h-auto w-auto bg-[#f1f1f1a1] transition-transform  ease-in-out z-10 rounded-full"
-                    onMouseEnter={() => setIsHoveredyellow(true)}
-                    onMouseLeave={() => setIsHoveredyellow(false)}
-                  >
-                    {isHoveredyellow && (
-                      <motion.div className="rounded-full text-black text-start px-3 py-1 transition-all ease-in-out duration-300 z-10">
-                        Read More
-                      </motion.div>
-                    )}
-                    <div className="h-auto w-auto rounded-full bg-white transition-transform duration-300 hover:-rotate-45 p-1">
-                      <ChevronRight width={40} height={40} />
-                    </div>
-                  </motion.div>
-                </Link>
-              </div>
-            </div>
-          </Carousel.Slide>
-        </Carousel>
-      </div>
-
-      <div className="py-[100px] flex flex-col gap-6 justify-center lg:hidden">
-        <div className="flex flex-col gap-10 justify-start items-start py-4 px-6">
-          <div
-            className={` ${merriweather.variable} font-merriweather font-semibold flex flex-col lg:gap-2 text-[35px] lg:text-[42px]  text-[#312f30] leading-none `}
-          >
-            Our Services
-          </div>
-          {/* <p className="text-[20px] tracking-tight">nnsron</p> */}
-        </div>
-        <MantineProvider>
-          <div className="w-full h-auto flex items-center justify-center">
-            <Box className="flex items-center justify-center h-[450px] w-full sm:w-[600px] md:hidden">
-              <Carousel
-                withIndicators
-                loop
-                height="100%"
-                className="w-full h-full flex-1 snap-x px-6"
-                plugins={[autoplay.current]}
-                onMouseEnter={autoplay.current.stop}
-                onMouseLeave={autoplay.current.reset}
-                nextControlIcon={
-                  <IconArrowRight
-                    style={{ width: "2rem", height: "2rem" }}
-                    color="black"
-                  />
-                }
-                previousControlIcon={
-                  <IconArrowLeft
-                    style={{ width: "2rem", height: "2rem" }}
-                    color="black"
-                  />
-                }
-              >
-                <Carousel.Slide className="w-full flex  items-center justify-center snap-center">
-                  <div className="w-[400px] rounded-[25px] h-full p-4 flex flex-col gap-2 bg-[#C3F498]  justify-center ">
-                    <div className="relative flex flex-row justify-end items-start h-2/3 w-full">
-                      <Image
-                        src={oneonone}
-                        alt="logo"
-                        className="p-0 w-full h-full rounded-tl-[20px] rounded-tr-[20px] rounded-bl-[100px] rounded-br-[20px] z-0"
-                      />
-                    </div>
-                    <div className="flex flex-row  items-center h-1/3 w-full">
-                      {" "}
-                      <p className="font-semibold text-[25px] w-[200px]">
-                        ABA one-on-one direct therapy
-                      </p>
-                    </div>
-                  </div>
-                </Carousel.Slide>
-                <Carousel.Slide className="w-full flex items-center justify-center snap-center">
-                  <div className="w-[400px] rounded-[25px] h-full p-4 flex flex-col gap-2 bg-[#FF9358]  justify-center ">
-                    <div className="relative flex flex-row justify-end items-start h-2/3 w-full">
-                      <Image
-                        src={familytraining}
-                        alt="logo"
-                        className="p-0 w-full h-full rounded-tl-[20px] rounded-tr-[20px] rounded-bl-[100px] rounded-br-[20px] z-0"
-                      />
-                    </div>
-                    <div className="flex flex-row  items-center h-1/3 w-full">
-                      {" "}
-                      <p className="font-semibold text-[25px] w-[200px]">
-                        Family Caregiver/Training
-                      </p>
-                    </div>
-                  </div>
-                </Carousel.Slide>
-                <Carousel.Slide className="w-full flex items-center justify-center snap-center">
-                  <div className="w-[400px] rounded-[25px] h-full p-4 flex flex-col gap-2 bg-[#97EAFD]  justify-center ">
-                    <div className="relative flex flex-row justify-end items-start h-2/3 w-full">
-                      <Image
-                        src={occupationaltherapy}
-                        alt="logo"
-                        className="p-0 w-full h-full rounded-tl-[20px] rounded-tr-[20px] rounded-bl-[100px] rounded-br-[20px] z-0"
-                      />
-                    </div>
-                    <div className="flex flex-row  items-center h-1/3 w-full">
-                      {" "}
-                      <p className="font-semibold text-[25px] w-[200px]">
-                        Occupational Therapy
-                      </p>
-                    </div>
-                  </div>
-                </Carousel.Slide>
-                <Carousel.Slide className="w-full flex items-center justify-center snap-center">
-                  <div className="w-[400px] rounded-[25px] h-full p-4 flex flex-col gap-2 bg-[#FFE24F]  justify-center ">
-                    <div className="relative flex flex-row justify-end items-start h-2/3 w-full">
-                      <Image
-                        src={grouptherapy} // Ensure correct reference
-                        alt="logo"
-                        width={230} // Explicit width
-                        height={230} // Explicit height
-                        className="p-0 w-full h-full rounded-tl-[20px] rounded-tr-[20px] rounded-bl-[100px] rounded-br-[20px] z-10"
-                      />
-                    </div>
-                    <div className="flex flex-row  items-center h-1/3 w-full">
-                      {" "}
-                      <p className="font-semibold text-[25px] w-[200px]">
-                        Group Sessions
-                      </p>
-                    </div>
-                  </div>
-                </Carousel.Slide>
-              </Carousel>
-            </Box>
-          </div>
-        </MantineProvider>
+        Our Services
       </div>
     </div>
-  );
+
+    <MantineProvider>
+      <Carousel
+        withIndicators
+        loop
+        align="start"
+        slideGap="md"
+        height={450}
+        slideSize={{
+          base: "100%",
+          sm: "50%",
+          lg: "33.333%",
+        }}
+        className="w-full px-6 lg:px-28"
+        plugins={[autoplay.current]}
+        onMouseEnter={autoplay.current.stop}
+        onMouseLeave={autoplay.current.reset}
+        nextControlIcon={
+          <IconArrowRight
+            style={{ width: "2rem", height: "2rem" }}
+            color="black"
+          />
+        }
+        previousControlIcon={
+          <IconArrowLeft
+            style={{ width: "2rem", height: "2rem" }}
+            color="black"
+          />
+        }
+      >
+        {services.map((service, index) => {
+          const leftArrow = index % 2 === 0;
+
+          return (
+            <Carousel.Slide key={service.id}>
+              <div
+                className="w-full max-w-[400px] mx-auto rounded-[25px] h-full p-4 flex flex-col gap-2"
+                style={{ backgroundColor: service.color }}
+              >
+                {leftArrow ? (
+                  <>
+                    <div className="relative flex flex-row justify-end items-start h-2/3 w-full">
+                      <Link href={service.href}>
+                        <motion.div
+                          animate={
+                            hovered === service.id
+                              ? { opacity: 1, x: 2 }
+                              : { opacity: 1, x: 0 }
+                          }
+                          transition={{
+                            duration: 0.3,
+                            ease: "easeInOut",
+                          }}
+                          className="absolute top-0 left-0 flex items-center justify-start cursor-pointer bg-[#f1f1f1a1] rounded-full z-10"
+                          onMouseEnter={() => setHovered(service.id)}
+                          onMouseLeave={() => setHovered(null)}
+                        >
+                          <div className="rounded-full bg-white p-1 transition-transform duration-300 hover:-rotate-45">
+                            <ChevronRight width={40} height={40} />
+                          </div>
+
+                          {hovered === service.id && (
+                            <motion.div className="px-3 py-1">
+                              Read More
+                            </motion.div>
+                          )}
+                        </motion.div>
+                      </Link>
+
+                      <motion.div
+                        initial={{ scale: 0.8, opacity: 0 }}
+                        animate={isInView ? { scale: 1, opacity: 1 } : {}}
+                        transition={{
+                          duration: 0.8,
+                          ease: "easeOut",
+                        }}
+                        className="w-full h-full"
+                      >
+                        <Image
+                          src={service.image}
+                          alt={service.title}
+                          className="w-full h-full object-cover rounded-tl-[20px] rounded-tr-[20px] rounded-bl-[100px] rounded-br-[20px]"
+                        />
+                      </motion.div>
+                    </div>
+
+                    <div className="flex items-center h-1/3">
+                      <p className="font-semibold text-[22px] lg:text-[25px] max-w-[220px]">
+                        {service.title}
+                      </p>
+                    </div>
+                  </>
+                ) : (
+                  <>
+                    <div className="flex justify-end items-start h-1/3">
+                      <p className="font-semibold text-[22px] lg:text-[25px] text-right max-w-[220px]">
+                        {service.title}
+                      </p>
+                    </div>
+
+                    <div className="relative flex justify-between items-end h-2/3">
+                      <motion.div
+                        initial={{ scale: 0.8, opacity: 0 }}
+                        animate={isInView ? { scale: 1, opacity: 1 } : {}}
+                        transition={{
+                          duration: 0.8,
+                          ease: "easeOut",
+                        }}
+                        className="w-full h-full"
+                      >
+                        <Image
+                          src={service.image}
+                          alt={service.title}
+                          className="w-full h-full object-cover rounded-tl-[20px] rounded-tr-[100px] rounded-bl-[20px] rounded-br-[20px]"
+                        />
+                      </motion.div>
+
+                      <Link href={service.href}>
+                        <motion.div
+                          animate={
+                            hovered === service.id
+                              ? { opacity: 1, x: 2 }
+                              : { opacity: 1, x: 0 }
+                          }
+                          transition={{
+                            duration: 0.3,
+                            ease: "easeInOut",
+                          }}
+                          className="absolute bottom-0 right-0 flex items-center cursor-pointer bg-[#f1f1f1a1] rounded-full z-10"
+                          onMouseEnter={() => setHovered(service.id)}
+                          onMouseLeave={() => setHovered(null)}
+                        >
+                          {hovered === service.id && (
+                            <motion.div className="px-3 py-1">
+                              Read More
+                            </motion.div>
+                          )}
+
+                          <div className="rounded-full bg-white p-1 transition-transform duration-300 hover:-rotate-45">
+                            <ChevronRight width={40} height={40} />
+                          </div>
+                        </motion.div>
+                      </Link>
+                    </div>
+                  </>
+                )}
+              </div>
+            </Carousel.Slide>
+          );
+        })}
+      </Carousel>
+    </MantineProvider>
+  </div>
+);
 }

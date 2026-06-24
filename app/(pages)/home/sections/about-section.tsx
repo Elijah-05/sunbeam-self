@@ -22,7 +22,7 @@ export default function AboutSection() {
     router.push(path); // Navigate to the specified path
   };
   return (
-    <div className="flex flex-col lg:flex-row h-auto lg:h-screen gap-11 w-full px-6 lg:px-28 items-center justify-center  pt-[20%] lg:py-0 pb-[15%]">
+    <div className="flex flex-col lg:flex-row h-auto lg:h -screen gap-11 w-full px-6 lg:px-28 items-center justify-center py-20">
       <div className="hidden lg:flex items-center justify-center w-1/2 h-full p-10">
         <Image src={heroImage} alt="logo" className="p-0" priority />
       </div>

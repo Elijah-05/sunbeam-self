@@ -73,7 +73,7 @@ const FAQSection = () => {
   };
 
   return (
-    <div className="w-full h-auto  px-5 lg:px-[200px] py-20 flex flex-col gap-6 lg:gap-8">
+    <div className="w-full h-auto  px-5 lg:px-[200px] pt-40 pb-20 flex flex-col gap-6 lg:gap-8">
       <div
         className={` ${merriweather.variable} font-merriweather text-[#312f30] flex flex-col lg:gap-2 text-[36px] lg:text-[42px]  font-semibold leading-none `}
       >
@@ -110,7 +110,7 @@ const FAQSection = () => {
 
         <div className="pt-8 grid place-content-center">
           <Link href="/faq">
-            <Button>Get To Know About Sunbeam</Button>
+            <Button>What to Expect</Button>
           </Link>
         </div>
       </div>

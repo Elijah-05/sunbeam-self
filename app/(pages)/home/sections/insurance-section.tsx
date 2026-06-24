@@ -19,7 +19,7 @@ const insurances = [
 
 export default function InsuranceSection() {
   return (
-    <section className="w-full bg-[#FFF8F4] pt-16 pb-40 px-6 lg:px-28">
+    <section className="w-full bg-[#FFF8F4] py-16 px-6 lg:px-28">
       {/* Header */}
       <div className="flex flex-col items-center text-center gap-4 mb-12">
         <div
