@@ -3,6 +3,8 @@ import { useState } from "react";
 import { Collapse } from "@mantine/core";
 import { ChevronDown, ChevronUp } from "lucide-react";
 import { Fredoka } from "next/font/google";
+import Link from "next/link";
+import { Button } from "@/components/ui/button";
 
 const merriweather = Fredoka({
   weight: ["400", "400"],
@@ -99,10 +101,18 @@ const FAQSection = () => {
               </div>
             </div>
             <Collapse in={openedIndex === index}>
-              <p className="mt-2 text-[#545454] text-[16px] lg:text-[18px]">{faq.answer}</p>
+              <p className="mt-2 text-[#545454] text-[16px] lg:text-[18px]">
+                {faq.answer}
+              </p>
             </Collapse>
           </div>
         ))}
+
+        <div className="pt-8 grid place-content-center">
+          <Link href="/faq">
+            <Button>Get To Know About Sunbeam</Button>
+          </Link>
+        </div>
       </div>
     </div>
   );

@@ -70,6 +70,9 @@ export const MobileNavbar = () => {
           >
             ABA Service Request
           </Link>
+           <Link className="underline-hover" href="/faq">
+            FAQ
+          </Link>
           <Link href="/jobs" onClick={() => handleLinkClick("/jobs")}>
             Jobs
           </Link>
@@ -132,6 +135,9 @@ export const Navbar = () => {
           </Link>
           <Link className="underline-hover" href="/abarequest">
             ABA Service Request
+          </Link>
+           <Link className="underline-hover" href="/faq">
+            FAQ
           </Link>
           {/* <Link className="underline-hover" href="/graduatestudents">
             Graduate Students

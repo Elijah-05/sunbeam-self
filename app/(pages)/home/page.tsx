@@ -12,6 +12,7 @@ import CookieBanner from "@/app/shared/cookie-banner";
 import Abasection from "./sections/abasection";
 import FAQSection from "./sections/faq";
 import Requestsection from "./sections/requestsection";
+import InsuranceSection from "./sections/insurance-section";
 // import Form from './sections/form'
 
 export default function Home() {
@@ -24,8 +25,10 @@ export default function Home() {
       <FAQSection />
       <ContactSection />
       <Requestsection />
-{/* 
-      <CookieBanner /> */}
+      <InsuranceSection />
+    {/* 
+      <CookieBanner />
+    */}
     </div>
   );
 }
