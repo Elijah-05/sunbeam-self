@@ -47,8 +47,9 @@ export default function InsuranceSection() {
                   <Image
                     src={ins.logo}
                     alt={ins.name}
-                    fill
-                    className="object-contain p-2"
+                    width={200}
+                    height={200}
+                    className="h-full w-full object-contain p-2"
                   />
               </div>
             </div>
